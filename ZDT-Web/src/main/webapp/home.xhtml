@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/template.xhtml">
+	<ui:define name="content">
+		<h1>
+			<h:outputText value="Zero Downtime Deployment sample" />
+		</h1>
+		<br />
+		<h2>Entries</h2>
+		<table>
+			<ui:repeat value="#{entryBean.entries}" var="v_entry">
+				<tr>
+					<td>#{v_entry.id}</td>
+					<td>#{v_entry.description}</td>
+				</tr>
+			</ui:repeat>
+		</table>
+
+		<h:form>
+			<div
+				style="border-top: 1px solid #d0d0d0; margin-top: 12px; padding-top: 12px">
+				<h:inputText value="#{entryBean.entry.description}" id="entryDesc" />
+				<h:commandButton action="#{entryBean.saveEntry}" value="Add" />
+				<h:message for="entryDesc" style="color : red;padding-left : 8px" />
+			</div>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
